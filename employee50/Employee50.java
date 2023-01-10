@@ -60,15 +60,20 @@ public class Employee50 {
 
 					break;
 				case 2:
-					ResultSet rs = ps2.executeQuery();
-					while (rs.next()) {
-						System.out.println(rs.getString(1)+"\t"+
-								rs.getString(2)+"\t"+
-								rs.getString(3)+"\t"+
-								rs.getString(4)+"\t"+
-								rs.getString(5)
-								);
-					}
+					int ck = ps2.executeUpdate();
+					if (ck>0) {
+						ResultSet rs = ps2.executeQuery();
+						while (rs.next()) {
+							
+							System.out.println(rs.getString(1)+"\t"+
+									rs.getString(2)+"\t"+
+									rs.getString(3)+"\t"+
+									rs.getString(4)+"\t"+
+									rs.getString(5)
+									);
+						}
+					}else 	System.out.println("Data Not Available");
+
 					break;
 				case 3:
 					System.out.println("Enter the Employe Id");
@@ -88,17 +93,21 @@ public class Employee50 {
 					break;
 				case 4:
 					System.out.println("Enter the Employe Id");
-					String sid1 = sc.nextLine();
-					System.out.println("Enter the Employe Basic Salary");
-					float bsal1 = Float.parseFloat(sc.nextLine());
-					Float totsal1=(float) (((float)bsal1*0.93)+((Float)bsal1*0.61));
+					String sid1 = sc.nextLine();//101
+					ps3.setString(1,sid1);
+					ResultSet rs14=ps3.executeQuery();
+					if(rs14.next()) {
+						System.out.println("Enter the Employe Basic Salary");
+						float bsal1 = Float.parseFloat(sc.nextLine());//150000
+						Float totsal1=(float) (((float)bsal1*0.93)+((Float)bsal1*0.61));//1800
 
-					ps4.setFloat(1, bsal1);	
-					ps4.setFloat(2, totsal1);
-					ps4.setString(3, sid1);
-					int k1 =ps4.executeUpdate();
-					if (k1>0) {
-						System.out.println("Table Updatede....");
+						ps4.setFloat(1, bsal1);	
+						ps4.setFloat(2, totsal1);
+						ps4.setString(3, sid1);
+						int k1 =ps4.executeUpdate();
+						if (k1>0) {
+							System.out.println("Table Updatede....");
+						}
 					}else {
 						System.out.println("Data not found....");
 					}
