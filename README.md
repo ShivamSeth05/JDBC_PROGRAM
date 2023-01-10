@@ -1,13 +1,13 @@
 # JDBC_PROGRAM
-##  1.Demo program<br>
 <hr>
+##  1.Demo program<br>
 
 ##  2.Book Details(JDBC)<br>
 Create table with name Customer50 <br>
 (custId , custName, custCity, CustMailid, custNo)<br>
 Primary Key(custId)
 
-##  2.Book Details 50(JDBC)<br>
+##  3.Book Details 50(JDBC)<br>
 Create table with name Customer50 <br>
 (custId , custName, custCity, CustMailid, custNo)<br>
 Primary Key(custId)
