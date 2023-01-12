@@ -31,6 +31,28 @@ BookDetails50 based on user choice:
 totSal = bSal+HRA+DA;<br>
 HRA = 93% of bSal<br>
 DA = 61% of bSal
- 
+
+##  5.Student50(rollNo,name,branch,totmarks,per,grade)
+
+DB Table : Student50(rollNo,name,branch,totmarks,per,grade)
+
+SQL> create table Student50(<br>
+  2  rollNo number(15),<br>
+  3  name varchar2(20),<br>
+  4  branch varchar(20),<br>
+  5  totmarks number(3),<br>
+  6  per number(3,2),<br>
+  7  grade varchar2(20));<br>
+
+Construct JDBC Application to perform the following operations:<br>
+1.AddStudent<br>
+2.ViewAllStudents<br>
+3.ViewStudentByRollNo<br>
+4.UpdateStudent(totMarks)<br>
+5.DeleteStudent<br>
+
+totMarks = s1+...+s6<br>
+per=<br>
+grade=
 
 
