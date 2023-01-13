@@ -55,4 +55,59 @@ totMarks = s1+...+s6<br>
 per=<br>
 grade=
 
+##  6. (dbconProcedureIN_OUT) Constructing and executing Procedure:
+### -> DBConnProcedure_IN(class)
+#### step-1 : create the following DB tables
+BankCustomer50(accno,custid,custname,balance,acctype)
+CustomerAddress50(accno,hno,snane,city,state,pincode)
+CustomerContact50(accno,mailid,phoneno)
+
+create table BankCustomer50(accno number(15),custid number(10),
+custname varchar2(15),balance number(10,2),acctype varchar2(15),
+primary key(accno));
+
+create table CustomerAddress50(accno number(15),hno varchar2(15),
+sname varchar2(15),city varchar2(15),state varchar2(15),
+pincode number(10),primary key(accno));
+
+create table CustomerContact50(accno number(15),mailid varchar2(25),
+
+phoneno number(15),primary key(accno));
+
+#### step-2 : Construct Procedure to insert data to Database tables
+
+create or replace procedure Register50
+(ano number,cid number,cname varchar2,bal number,actype varchar2,
+hn varchar2,sn varchar2,cty varchar2,st varchar2,pcode number,
+mid varchar2,pno number) is
+begin
+insert into BankCustomer50 values(ano,cid,cname,bal,actype);
+insert into CustomerAddress50 values(ano,hn,sn,cty,st,pcode);
+insert into CustomerContact50 values(ano,mid,pno);
+end;
+/
+
+#### step-3 : Contruct JDBC application to execute Procedure with IN parameters
+
+### -> DBConnProcedure_IN(Class)
+
+#### step-1 : Construct OUT-Parameter Procedures to display deatils
+ of Customer based on accNo
+ 
+ create or replace procedure Retrieve50
+(ano number,cid OUT number,cname OUT varchar2,bal OUT number,
+actype OUT varchar2,hn OUT varchar2,sn OUT varchar2,
+cty OUT varchar2,st OUT varchar2,pcode OUT number,
+mid OUT varchar2,pno OUT number) is
+begin
+ select custid,custname,balance,acctype into cid,cname,bal,actype
+ from BankCustomer50 where accno=ano;
+ select hno,sname,city,state,pincode into hn,sn,cty,st,pcode
+ from CustomerAddress50 where accno=ano;
+ select mailid,phoneno into mid,pno
+ from CustomerContact50 where accno=ano;
+end;
+ 
+ #### step 2 : Constructing JDBC application to execute OUT-Parameter
+ Procedure
 
